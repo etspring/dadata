@@ -12,6 +12,26 @@ module Dadata
       @config = config
     end
 
+    def address(term)
+      url = URI(URI.join(BASE_URL, 'address'))
+
+      req = Net::HTTP::Post.new(url)
+
+      req['Content-Type'] = 'application/json'
+      req['Accept'] = 'application/json'
+      req['Authorization'] = "Token #{@config[:api_key]}"
+
+      req.body = { query: term }.to_json
+
+      resp = perform_request(url, req)
+
+      if resp.code == '200'
+        [true, JSON.parse(resp.body, symbolize_names: true)]
+      else
+        [false, code: resp.code.to_i, message: resp.body]
+      end
+    end    
+
     def organization(term)
       url = URI(URI.join(BASE_URL, 'party'))
 
@@ -30,6 +50,26 @@ module Dadata
       else
         [false, code: resp.code.to_i, message: resp.body]
       end
+    end
+
+    def postal_unit(term)
+      url = URI(URI.join(BASE_URL, 'postal_unit'))
+
+      req = Net::HTTP::Post.new(url)
+
+      req['Content-Type'] = 'application/json'
+      req['Accept'] = 'application/json'
+      req['Authorization'] = "Token #{@config[:api_key]}"
+
+      req.body = { query: term }.to_json
+
+      resp = perform_request(url, req)
+
+      if resp.code == '200'
+        [true, JSON.parse(resp.body, symbolize_names: true)]
+      else
+        [false, code: resp.code.to_i, message: resp.body]
+      end      
     end
 
     private
