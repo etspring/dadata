@@ -25,7 +25,18 @@ require 'dadata'
 
 dadata = Dadata::Suggestion.new(api_key: 'YOURKEY')
 dadata.organization('ООО Рога и копыта')
+...
+dadata.postal_unit('101001')
+...
+dadata.address('Фучика')
 ```
+
+## GeoIp
+```ruby
+require 'dadata'
+
+dadata = Dadata::Geo.new(api_key: 'YOURKEY')
+dadata.ip('194.87.0.50')
 
 ## Contributing
 
