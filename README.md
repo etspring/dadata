@@ -37,6 +37,7 @@ require 'dadata'
 
 dadata = Dadata::Geo.new(api_key: 'YOURKEY')
 dadata.ip('194.87.0.50')
+```
 
 ## Contributing
 
