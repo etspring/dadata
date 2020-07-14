@@ -29,6 +29,8 @@ dadata.organization('ООО Рога и копыта')
 dadata.postal_unit('101001')
 ...
 dadata.address('Фучика')
+...
+dadata.delivery('3100400100000')
 ```
 
 ## GeoIp
